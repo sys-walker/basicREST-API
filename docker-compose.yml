@@ -1,0 +1,42 @@
+#SIMPLE API WITH DOCKER
+version: '3'
+
+services:
+  mysql_docker:
+    image: mysql:8.0.0
+    container_name: mysql_server
+    environment:
+      MYSQL_DATABASE: rest_api_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: resu
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_TCP_PORT: 3306
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_0900_ai_ci
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+
+  server_api:
+    container_name: php_apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_DBHOST=mysql_docker
+      - MYSQL_DBPORT=3306
+      - MYSQL_DBUSER=root
+      - MYSQL_DBPASS=toor
+      - MYSQL_DBNAME=testdb
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - mysql_docker
+    volumes:
+      - ./web:/var/www/html/
+
+volumes:
+  .:
+  web:
+  mysql_data:
+
