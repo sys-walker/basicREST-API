@@ -1,9 +1,9 @@
 <?php
 // include main configuration file
-require_once "/var/www/html/inc/config.php";
+require_once _PROJECT_PATH_."/inc/config.php";
 // include the base controller file
-require_once "/var/www/html/controller/BaseController.php";
+require_once _PROJECT_PATH_."/controller/BaseController.php";
 
 // VITAL include the use model file
-require_once "/var/www/html/model/ITLangModel.php";
+require_once _PROJECT_PATH_."/model/ITLangModel.php";
 ?>

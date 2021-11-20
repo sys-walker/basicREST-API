@@ -1,5 +1,9 @@
 <?php
-require "/var/www/html/inc/bootstrap.php";
+//$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+//$uri = explode( '/', $uri );
+//echo "<pre>".print_r($uri,true)."</pre>";
+
+require _PROJECT_PATH_."/inc/bootstrap.php";
 
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -20,7 +24,7 @@ if ((isset($uri[2]) && $uri[2] != 'itlang') || !isset($uri[3])) {
     exit();
 }
 
-require "/var/www/html/controller/ITLangController.php";
+require _PROJECT_PATH_."/controller/ITLangController.php";
 $objFeedController = new ITLangController();
 $strMethodName = $uri[3] . 'Action';
 $objFeedController->{$strMethodName}();

@@ -1,5 +1,5 @@
 <?php
-require_once "/var/www/html//model/Database.php";
+require_once _PROJECT_PATH_."/model/Database.php";
 
 class ITLangModel extends Database
 {

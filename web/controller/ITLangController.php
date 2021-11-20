@@ -29,22 +29,29 @@ class ITLangController extends BaseController{
             }
 
         }elseif (strtoupper($requestMethod) == 'POST') {
-            //Array
-            // [name] => Required
-            // [doc] => Required
-            // [desc] => optional
-            // [comm] => optional
+        echo print_r($arrQueryStringParams);
+                
+       die();/*
+            $postdata = file_get_contents("php://input");
+                  if (isset($postdata)) {
+                   $request = json_decode($postdata);
+                   $request->recibido = 'OK';
+                   echo json_encode($request);
+                  }
+        die();
+               
 
             try {
+                $arrQueryStringParams = file_get_contents("php://input");
                 $userModel = new ITLangModel();
-                if (isset($arrQueryStringParams['name']) && $arrQueryStringParams['doc']) {
+                if (!isset($arrQueryStringParams['name']) && !$arrQueryStringParams['doc']) {
 
                     $name_language = $arrQueryStringParams['name'];
                     $doc_language = $arrQueryStringParams['doc'];
 
                     $arrUsers = $userModel->insertIntoModel($name_language, $doc_language);
 
-                    $responseData = json_encode($arrUsers);
+                    $responseData = json_encode($arrQueryStringParams);
                     $this->sendOutput( $responseData, array('Content-Type: application/json', 'HTTP/1.1 201 Created'));
                     exit();
                 }else{
@@ -56,7 +63,7 @@ class ITLangController extends BaseController{
                 
             } catch (Error $e) {
                 die("Die after error");
-            }
+            }*/
 
             
         }else {
