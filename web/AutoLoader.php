@@ -1,7 +1,7 @@
 <?php
 	//The autoloader of dockerized api
 	//loads the deafault table
-	require_once "/var/www/html/inc/config.php";
+	require_once _PROJECT_PATH_."/inc/config.php";
 	echo "<h2>AutoLoader information:</h2>";
 	$connection = new mysqli(DB_HOST.":".DB_PORT, DB_USERNAME, DB_PASSWORD, DB_DATABASE_NAME);
 	 if (!$connection) {

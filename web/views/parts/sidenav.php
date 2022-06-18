@@ -3,5 +3,5 @@
   <a href="/use">Api instructions</a>
   <a href="/phpMyAdmin">phpMyAdmin</a>
   <a href="/info">PHP info</a>
-  <a href="#about">About</a>
+  <a href="/about">About</a>
 </div>

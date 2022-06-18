@@ -6,7 +6,12 @@ class BaseController
      */
     public function __call($name, $arguments)
     {
-        $this->sendOutput('', array('HTTP/1.1 404 Not Found'));
+        // if the no table operation is specified
+
+        $content = array('error' => "Not found");
+        $responseData = json_encode($content); 
+        $header = 'HTTP/1.1 404 Not Found';
+        $this->sendOutput($responseData,array('Content-Type: application/json', $header));
     }
 
     /**
