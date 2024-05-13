@@ -34,9 +34,21 @@ services:
       - mysql_docker
     volumes:
       - ./web:/var/www/html/
-
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma_docker
+    links:
+      - mysql_docker
+    environment:
+      PMA_HOST: mysql_server
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 0
+    restart: always
+    ports:
+      - 8081:80
 volumes:
   .:
   web:
   mysql_data:
 
+# <HostPort:containerport>
