@@ -10,11 +10,10 @@ class ITLangModel extends Database
     public function getLanguages_nolimit(){
         return $this->select("SELECT * FROM it_languages ORDER BY id ASC");
     }
-    public function insertIntoModel($name_language, $doc_language)
+    
+    public function insertIntoModel($name_language, $doc_language, $description, $comment)
     {
-         //echo("Sucess1");
-         return $this->insert(
-            "INSERT INTO it_languages ( name, documentation_url, description, comment) VALUES ( '".$name_language."', '" .$doc_language." ' , 'test1', 'test2')");
+         return $this->insert( "INSERT INTO it_languages (name, documentation_url, description, comment) VALUES ('".$name_language."', '".$doc_language."', '".$description."', '".$comment."')");
     }
 }
 ?>

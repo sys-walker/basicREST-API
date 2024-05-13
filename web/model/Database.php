@@ -57,8 +57,11 @@ class Database
         try {
             $stmt = $this->executeStatement( $query , $params );
             $result = "insert was okay"; //response of creation
-            $stmt->close();
-
+            $response = [
+                'message' => 'success creation',
+                'date' => date('Y-m-d H:i:s')
+            ];
+            $result = json_encode($response);
             return $result;
         } catch(Exception $e) {
             throw New Exception( $e->getMessage() );

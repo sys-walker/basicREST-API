@@ -22,14 +22,26 @@ require_once "/var/www/html/views/parts/sidenav.php";
       
     
   </ul>
-  <h1> POST (Not implemented yet)</h1>
+  <h1> POST</h1>
   
   <ul>
-    <p>http://localhost/api/itlang/list?[name=&ltname&gt]&[doc=&ltdoc url&gt]&[desc=&ltdescription&gt]&[comm=&ltcomment&gt] </p>
+    <p>http://localhost/api/itlang/add </p>
+    <div>
+    <code>{</code><br>
+      <div style="margin-left:15px">
+        <code> "name":"W++"</code><br>
+        <code> "documentation_url":"wlang.org.wk",</code><br>
+        <code> "description":"W++",</code>  <br>
+        <code>"comment":"Wakandian C++"}</code><br>
+      </div>
+      <code>}</code><br>
+    </div>
+
+
     <p>[name] => Required</p>
     <p>[doc] => Required</p>
-    <p>[desc] => optional (but they are ignored and replaced by "test1")</p>
-    <p>[comm] => optional (but they are ignored and replaced by "test2")</p>
+    <p>[desc] => optional (default "")</p>
+    <p>[comm] => optional (deafult "")</p>
   </ul>
 
 </div>
