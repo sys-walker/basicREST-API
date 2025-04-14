@@ -1,5 +1,19 @@
 <?php
 class ITLangController extends BaseController{
+
+    public function getElements(){
+        $requestMethod = $_SERVER["REQUEST_METHOD"];
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+        $params = explode( '/', $uri );
+        //For single elements or all elelmets
+        echo "<pre>".print_r($requestMethod,true)."</pre>";
+        echo "<pre>".print_r($params,true)."</pre>";
+        //TODO: suport for  ../ITLang/list
+        //TODO: suport for  ../ITLang
+
+
+    }
     /**
      * "/ITLang/list" Endpoint - Get list of IT Languages
      */

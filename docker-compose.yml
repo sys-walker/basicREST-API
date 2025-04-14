@@ -1,10 +1,9 @@
 #SIMPLE API WITH DOCKER
 version: '3'
-
 services:
   mysql_docker:
     image: mysql:8.0.0
-    container_name: mysql_server
+    #container_name: mysql_server
     environment:
       MYSQL_DATABASE: rest_api_db
       MYSQL_USER: user
@@ -36,7 +35,6 @@ services:
       - ./web:/var/www/html/
 
 volumes:
-  .:
   web:
   mysql_data:
 
