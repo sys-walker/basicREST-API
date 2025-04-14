@@ -80,9 +80,10 @@ function itlang_operations($params){
 
             break;
         case 'POST':
-            echo "<p>add resource</p>";
-            echo "<pre>".print_r($requestMethod,true)."</pre>";
-            echo "<pre>".print_r($params,true)."</pre>";
+            $objFeedController->addElement(); 
+            // echo "<p>add resource</p>";
+            // echo "<pre>".print_r($requestMethod,true)."</pre>";
+            // echo "<pre>".print_r($params,true)."</pre>";
             # code...
             break;
         case 'PUT':

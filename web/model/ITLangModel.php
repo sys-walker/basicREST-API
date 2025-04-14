@@ -16,5 +16,11 @@ class ITLangModel extends Database
          return $this->insert(
             "INSERT INTO it_languages ( name, documentation_url, description, comment) VALUES ( '".$name_language."', '" .$doc_language." ' , 'test1', 'test2')");
     }
+    public function getLanguagemodel($id)
+    {
+        return $this->select("SELECT * FROM it_languages WHERE id = ".$id);
+    }
+
+    
 }
 ?>
