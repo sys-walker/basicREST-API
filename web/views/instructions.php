@@ -5,34 +5,71 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="/css/homepage.css" >
+  <link rel="stylesheet" type="text/css" href="/css/use.css" >
 </head>
 <body>
-<?php
-require_once "/var/www/html/views/parts/sidenav.php";
-?>
+  <?php
+  require_once "/var/www/html/views/parts/sidenav.php";
+  ?>
 
-<div class="content">
+  <div class="content">
 
-  <h1> GET</h1>
-  <ul>
-    <p>URL v0: http://localhost/api/itlang/list</p>
-    <p>URL v1: http://localhost:[port]/api/itlang/list?limit=[n (optional)]</p>
-    <p>URL v2: http://localhost:[port]/api/itlang/list</p>
-    <p><b>[port] it is not necessary unless if you have changed it in dockerfile</b></p>
-      
+    <h1> GET</h1>
+    <ul>
+      <li>
+        <p onclick=window.open(getExample('/api/itlang/list'))> http://localhost/api/itlang/list</p>
+        <p class="comment">List all itlang items</p>
+      </li>
+      <li>
+        <p onclick=window.open(getExample('/api/itlang/list?limit=3'))> http://localhost/api/itlang/list?limit=&lt;num&gt;</p>
+        <p class="comment" style="color:red !important;">Not implemented</p>
+      </li>
+      <li>
+        <p onclick=window.open(getExample('/api/itlang?id=3'))> http://localhost/api/itlang?id=&lt;num&gt;</p>
+        <p class="comment">Get item with id</p>
+      </li>
+      <li>
+        <p onclick=window.open(getExample('/api/itlang/1'))> http://localhost/api/itlang/&lt;num&gt;</p>
+        <p class="comment">Get item with id</p>
+      </li>
+    </ul>
+    <h1> POST</h1>
     
-  </ul>
-  <h1> POST (Not implemented yet)</h1>
-  
-  <ul>
-    <p>http://localhost/api/itlang/list?[name=&ltname&gt]&[doc=&ltdoc url&gt]&[desc=&ltdescription&gt]&[comm=&ltcomment&gt] </p>
-    <p>[name] => Required</p>
-    <p>[doc] => Required</p>
-    <p>[desc] => optional (but they are ignored and replaced by "test1")</p>
-    <p>[comm] => optional (but they are ignored and replaced by "test2")</p>
-  </ul>
+    <ul>
+       <li>
+        <p> http://localhost/api/itlang</p>
+        <p>
+          {<br>
+          &nbsp;&nbsp;"name"&nbsp;:&nbsp;"Z++",<br>
+          &nbsp;&nbsp;"documentation_url"&nbsp;:&nbsp;"zlang.lol",<br>
+          &nbsp;&nbsp;"description"&nbsp;:&nbsp; <span>(optional)</span><br>
+          &nbsp;&nbsp;"comment"&nbsp;:&nbsp;<span>(optional)</span><br>
+          }
+        </p>
+        <p class="comment">Add element to table</p>
+      </li>
+    </ul>
 
-</div>
+  </div>
+
+  <script>
+
+    
+    function getExample(endpoint){
+        let arr =(window.location.href).split(/[\/\/,\/]+/);
+      let proto = arr[0];
+      let host = arr[1];
+      return proto+"//"+host+endpoint; 
+
+
+
+      
+
+    }
+    function jsonToTxt(json){
+      return JSON.stringify(json, null, 2);
+    }
+  </script>
 </body>
 </html>
 

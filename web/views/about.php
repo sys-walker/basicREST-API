@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +16,9 @@ require_once "/var/www/html/views/parts/sidenav.php";
 
 <div class="content">
 
-  <h1>About</h1>
+  <?php
+phpinfo()
+?>
 
 </div>
 </body>
