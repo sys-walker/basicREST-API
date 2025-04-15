@@ -33,8 +33,18 @@ services:
       - mysql_docker
     volumes:
       - ./web:/var/www/html/
-
+  swagger_ui:
+    image: swaggerapi/swagger-ui
+    container_name: swagger_ui
+    ports:
+      - 8080:8080
+    volumes:
+      - ./swagger.yml:/swagger.yml
+    environment:
+      - SERVER_URL=http://server_api:80
+      - SWAGGER_JSON=/swagger.yml
+    depends_on:
+      - server_api
 volumes:
   web:
   mysql_data:
-

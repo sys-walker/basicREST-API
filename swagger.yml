@@ -1,0 +1,105 @@
+openapi: 3.0.4
+info:
+  title: Swagger REQRES - OpenAPI 3.0
+  description: |-
+    This is a sample ReqRes Server based on the OpenAPI 3.0 specification.  You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io).
+
+    Some useful links:
+    - [Reqres.in](https://reqres.in/)
+
+  version: 1.0.12
+externalDocs:
+  description: Find out more about Swagger
+  url: https://swagger.io
+# servers:
+#   - url: http://php_apache:80/
+tags:
+  - name: store
+    description: List sample users
+    externalDocs:
+      description: Find out more
+      url: https://reqres.in/
+paths:
+  /api/itlang:
+    get:
+      tags:
+        - store
+      summary: Place an order for a pet.
+      description: Place a new order in the store.
+      operationId: placeOrder
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: integer
+          description: id lang
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int64
+          example: 10
+        per_page:
+          type: integer
+          format: int64
+          example: 198772
+        total:
+          type: integer
+          format: int32
+          example: 7
+        total_pages:
+          type: integer
+          format: int32
+          example: 7
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+          example:
+            - id: 1
+              email: janet.weaver@reqres.in
+              first_name: Janet
+              last_name: Weaver
+              avatar: https://reqres.in/img/faces/2-image.jpg
+
+      xml:
+        name: order
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        email:
+          type: string
+          format: email
+          example: user@example.com
+        first_name:
+          type: string
+          example: sas
+
+        last_name:
+          type: string
+          example: sas
+        avatar:
+          type: string
+          example: sas
