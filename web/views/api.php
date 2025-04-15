@@ -77,14 +77,9 @@ function itlang_operations($params){
     switch ($requestMethod) {
         case 'GET':
             $objFeedController->getElements(); 
-
             break;
         case 'POST':
             $objFeedController->addElement(); 
-            // echo "<p>add resource</p>";
-            // echo "<pre>".print_r($requestMethod,true)."</pre>";
-            // echo "<pre>".print_r($params,true)."</pre>";
-            # code...
             break;
         case 'PUT':
             echo "<p>update/replace resource</p>";

@@ -96,11 +96,24 @@ class ITLangController extends BaseController{
 
 
             if (isset($scopedValues['name'],$scopedValues['documentation_url']) ){
-    
-            //   $scopedValues['createdAt'] = date('Y-m-d H:i:s');
-            //   $scopedValues['updatedAt'] = date('Y-m-d H:i:s');
+                $strErrorDesc = '';
+                $name = $scopedValues['name'];
+                $doc_url = $scopedValues['documentation_url'];
+                $description = $scopedValues['description'];
+                $comment = $scopedValues['comment'];
 
-                echo "<pre>".print_r($array,true)."</pre>";
+
+                $itLangModel = new ITLangModel();
+                // Call the createLanguage method to create a new IT language
+                $newLanguage = $itLangModel->insertIntoModel($name, $doc_url,$description,$comment);
+                $responseData = json_encode($newLanguage);
+
+                
+
+
+                // echo "<pre>".print_r($scopedValues,true)."</pre>";
+                $this->sendOutput($responseData,array('Content-Type: application/json', HttpStatus::C200));
+                
             }else{
                 $content = array('error' => "Invalid JSON");
                 $responseData = json_encode($content); 
